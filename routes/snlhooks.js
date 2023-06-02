@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Notifies = require('../models/Notifies.js');
+const Snlhook = require('../models/SNLhook.js');
 
 router.get('/', (req, res, next) => {
-    Notifies.find((err, notifiess) => {
+    Snlhook.find((err, snlhooks) => {
         if (err) return next(err);
-        res.json(notifiess);
+        res.json(snlhooks);
     })
 })
-router.get('/:refno', (req, res, next) => {
-    Notifies.findOne({refno:req.params.refno}, (err, post) => {
+router.get('/:transactionId', (req, res, next) => {
+    Snlhook.findOne({transactionId:req.params.transactionId}, (err, post) => {
         if (err) return next(err);
         res.json(post);
     })
 })
 router.post('/', (req, res, next) => {
-    Notifies.create(req.body, (err, post) => {
+    Snlhook.create(req.body, (err, post) => {
         if (err) return next(err);
         res.json(post);
     })
