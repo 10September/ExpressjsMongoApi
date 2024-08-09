@@ -10,6 +10,7 @@ const uri = process.env.MONGO_URI
 
 mongoose.Promise = global.Promise;
 
+mongoose.set('strictQuery', true)
 mongoose.connect(uri)
         .then(() => console.log('connection successfully!'))
         .catch((err) => console.error(err))
